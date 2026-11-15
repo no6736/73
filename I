@@ -131,6 +131,7 @@ local MyHub = {
         NoTexture       = false,
         Flashlight      = false,
         SelfMuting      = false,
+        AutoFarm        = false,
         Keybind         = Enum.KeyCode.Tab,
     },
     Core = {},
@@ -2524,6 +2525,7 @@ local function saveSettings()
             shiftLockMobile = ShiftLockMobile.enabled,
             selfMuting      = SelfMuting.enabled,
             antiCapture     = MyHub.Config.AntiCapture,
+            autoFarm        = MyHub.Config.AutoFarm,
             keybind         = tostring(MyHub.Config.Keybind):gsub("Enum%.KeyCode%.", ""),
         }
         writefile(SAVE_FILE, game:GetService("HttpService"):JSONEncode(data))
@@ -2825,6 +2827,7 @@ local function loadSettings()
         if data.shiftLockMobile ~= nil then ShiftLockMobile.enabled= data.shiftLockMobile end
         if data.selfMuting      ~= nil then SelfMuting.enabled     = data.selfMuting      end
         if data.antiCapture     ~= nil then MyHub.Config.AntiCapture = data.antiCapture   end
+        if data.autoFarm        ~= nil then MyHub.Config.AutoFarm    = data.autoFarm      end
         if data.keybind ~= nil then
             local ok, kc = pcall(function() return Enum.KeyCode[data.keybind] end)
             if ok and kc then
@@ -2854,6 +2857,7 @@ local function loadSettings()
             if syncFns.shiftLockMobile then syncFns.shiftLockMobile(ShiftLockMobile.enabled) end
             if syncFns.selfMuting      then syncFns.selfMuting(SelfMuting.enabled)         end
             if syncFns.antiCapture     then syncFns.antiCapture(MyHub.Config.AntiCapture)  end
+            if syncFns.autoFarm        then syncFns.autoFarm(MyHub.Config.AutoFarm)        end
             if MyHub.Config.NeverFail        then triggerNeverFailSmart()                 end
             if MyHub.Config.PCProgress       then stopPCProgress(); startPCProgress()     end
             if RemoteHackPC.enabled          then RemoteHackPC.stop(); RemoteHackPC.start() end
@@ -2866,6 +2870,10 @@ local function loadSettings()
             if ShiftLockMobile.enabled then ShiftLockMobile.stop(); ShiftLockMobile.start() end
             if SelfMuting.enabled      then SelfMuting.stop(); SelfMuting.start()    end
             if MyHub.Config.AntiCapture and MyHub.AntiCapture then MyHub.AntiCapture.start() end
+            if MyHub.Config.AutoFarm then
+                autoFarmWarnConfirmed = true
+                AutoFarm.setEnabled(true)
+            end
             task.delay(2, function()
                 reloadESP()
             end)
@@ -6101,10 +6109,14 @@ addToggle(Panes[3], "∞", "Auto Farm", "Hacks PCs, dodges beast, auto exit", fa
         if not autoFarmWarnConfirmed and showAutoFarmWarning then
             showAutoFarmWarning()
         else
+            MyHub.Config.AutoFarm = true
             AutoFarm.setEnabled(true)
+            saveSettings()
         end
     else
+        MyHub.Config.AutoFarm = false
         AutoFarm.setEnabled(false)
+        saveSettings()
     end
 end, "autoFarm")
 addToggle(Panes[3], "◈", "Auto Candy Quest", "Deposits candy until bucket is full", false, 2, function(s)
@@ -6243,14 +6255,18 @@ AutoFarmYesBtn.MouseButton1Click:Connect(function()
         setAutoFarmWarnPage(2)
     else
         autoFarmWarnConfirmed = true
+        MyHub.Config.AutoFarm = true
         AutoFarmConfirmBg.Visible = false
         AutoFarm.setEnabled(true)
+        saveSettings()
     end
 end)
 AutoFarmNoBtn.MouseButton1Click:Connect(function()
+    MyHub.Config.AutoFarm = false
     AutoFarmConfirmBg.Visible = false
     AutoFarm.setEnabled(false)
     if syncFns.autoFarm then syncFns.autoFarm(false) end
+    saveSettings()
 end)
     
 local wallhopSliderRow, wallhopSliderSet, wallhopSliderStop
