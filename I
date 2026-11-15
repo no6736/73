@@ -2803,6 +2803,9 @@ local function reloadESP(forceRebuildPlayers)
     end)
 end
 
+local AutoFarm
+local autoFarmWarnConfirmed = false
+
 local function loadSettings()
     pcall(function()
         if not isfile(SAVE_FILE) then return end
@@ -3199,7 +3202,7 @@ task.spawn(function()
     end))
 end)
 
-local AutoFarm = (function()
+AutoFarm = (function()
     local player = lp
     local RS = Replicated
     local UIS = UserInputService
@@ -6101,7 +6104,7 @@ end, "antiCapture")
 
 local AutoFarmConfirmBg
 local showAutoFarmWarning
-local autoFarmWarnConfirmed = false
+autoFarmWarnConfirmed = false
 
 addSection(Panes[3], "Auto Farm", 0)
 addToggle(Panes[3], "∞", "Auto Farm", "Hacks PCs, dodges beast, auto exit", false, 1, function(s)
