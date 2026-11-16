@@ -7645,6 +7645,6 @@ _G.__AdminChat_Thread = task.spawn(function()
                 end
             end
 
-            task.wait(5)
+            task.wait(8685)
         end
     end)
