@@ -1,17 +1,16 @@
-class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+class Student:
+    school = "Trường A"
 
-    def area(self):
-        return self.width * self.height
+    def __init__(self, name):
+        self.name = name
 
-    def perimeter(self):
-        return (self.width + self.height) * 2
+lan = Student("Lan")
+minh = Student("Minh")
 
-r1 = Rectangle(6, 4)
-print(r1.area(), r1.perimeter())
+print(lan.name, lan.school)
+print(minh.name, minh.school)
 
-r2 = Rectangle(3, 5)
-print(r2.area(), r2.perimeter())
-dm 
+Student.school = "Trường B"
+
+print(lan.name, lan.school)
+print(minh.name, minh.school)
