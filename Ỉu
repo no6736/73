@@ -1,12 +1,18 @@
-class Greeter:
-    def greet(self):
-        print("Xin chào, " + self.name + "!")
+class Rectangle:
+    def area(self):
+        return self.width * self.height
 
-g1 = Greeter()
-g1.name = "Lan"
+class SquareFromRectangle(Rectangle):
+    pass
 
-g2 = Greeter()
-g2.name = "Minh"
+r = Rectangle()
+r.width = 6
+r.height = 4
 
-g1.greet()
-g2.greet()
+square = SquareFromRectangle()
+square.width = 5
+square.height = 5
+
+print(r.area())
+print(square.area())
+ 
