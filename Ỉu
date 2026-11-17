@@ -1,14 +1,13 @@
-class Square:
+class Rectangle:
     pass
 
-s1 = Square()
-s2 = Square()
+r1 = Rectangle()
+r1.width = 6
+r1.height = 4
 
-s1.side = 4
-s2.side = 7
-print(s1.side)
-print(s2.side)
+r2 = Rectangle()
+r2.width = 3
+r2.height = 5
 
-s1.side = 5
-print(s1.side)
-print(s2.side)
+print(r1.width, "x", r1.height)
+print(r2.width, "x", r2.height)
