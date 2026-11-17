@@ -1,6 +1,6 @@
 class Rectangle:
-    def area(self):
-        return self.width * self.height
+    def perimeter(self):
+        return (self.width + self.height) * 2
 
 class SquareFromRectangle(Rectangle):
     pass
@@ -9,10 +9,9 @@ r = Rectangle()
 r.width = 6
 r.height = 4
 
-square = SquareFromRectangle()
-square.width = 5
-square.height = 5
+s = SquareFromRectangle()
+s.width = 5
+s.height = 5
 
-print(r.area())
-print(square.area())
- 
+print(r.perimeter())
+print(s.perimeter())
