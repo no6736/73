@@ -1,0 +1,14 @@
+class Square:
+    pass
+
+s1 = Square()
+s2 = Square()
+
+s1.side = 4
+s2.side = 7
+print(s1.side)
+print(s2.side)
+
+s1.side = 5
+print(s1.side)
+print(s2.side)
