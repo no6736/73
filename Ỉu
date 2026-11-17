@@ -1,13 +1,16 @@
-def even_numbers(a, b):
-    for i in range(a, b + 1):
-        if i % 2 == 0:
-            yield i
+class Greeter:
+    def greet(self):
+        print("Xin chào, " + self.name + "!")
 
-g1 = even_numbers(3, 10)
-print(next(g1))
-for num in g1:
-    print(num)
+lan = Greeter()
+lan.name = "Lan"
 
-g2 = even_numbers(3, 3)
-for num in g2:
-    print(num)
+minh = Greeter()
+minh.name = "Minh"
+
+lan.greet()
+minh.greet()
+
+lan.name = "An"
+lan.greet()
+minh.greet()
