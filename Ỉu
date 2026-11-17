@@ -1,17 +1,10 @@
-class Rectangle:
-    def perimeter(self):
-        return (self.width + self.height) * 2
+it = iter(range(1, 11))
 
-class SquareFromRectangle(Rectangle):
-    pass
+n1 = next(it)
+print(3, "x", n1, "=", 3 * n1)
 
-r = Rectangle()
-r.width = 6
-r.height = 4
+n2 = next(it)
+print(3, "x", n2, "=", 3 * n2)
 
-s = SquareFromRectangle()
-s.width = 5
-s.height = 5
-
-print(r.perimeter())
-print(s.perimeter())
+for i in it:
+    print(3, "x", i, "=", 3 * i)
