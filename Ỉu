@@ -1,8 +1,14 @@
-class Empty:
+class Product:
     pass
 
-first = Empty()
-second = Empty()
+def show_info(product):
+    print(f"{product.name} - {product.price} đồng")
 
-print(type(first).__name__)
-print(first is second)
+product = Product()
+product.name = "Bút"
+product.price = 5000
+
+show_info(product)
+
+product.price = 6000
+show_info(product)
