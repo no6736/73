@@ -1,19 +1,3 @@
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-
-    def label(self):
-        return f"{self.name} - {self.price} đồng"
-
-class BookProduct(Product):
-    def __init__(self, name, price, author):
-        super().__init__(name, price)
-        self.author = author
-
-    def label(self):
-        return f"{super().label()} - {self.author}"
-
-book = BookProduct("Python cơ bản", 50000, "Lan")
-print(book.label())
-print(book.price)
+print(len("Python"))
+print(len([10, 20, 30]))
+print(len({"tên": "Lan", "điểm": 8}))
