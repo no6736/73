@@ -1,13 +1,6 @@
 class Product:
     pass
 
-class BookProduct(Product):
-    pass
-
-class Customer:
-    pass
-
-print(issubclass(BookProduct, Product))
-print(issubclass(Product, BookProduct))
-print(issubclass(Customer, Product))
-print(issubclass(Product, Product))
+print(Product.__bases__)
+print(issubclass(Product, object))
+print(issubclass(object, Product))
