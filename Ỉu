@@ -1,28 +1,13 @@
-class Wallet:
-    def __init__(self):
-        self.__balance = 0
+class Product:
+    pass
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.__balance += amount
-            return True
-        return False
+class BookProduct(Product):
+    pass
 
-    def withdraw(self, amount):
-        if 0 < amount <= self.__balance:
-            self.__balance -= amount
-            return True
-        return False
+class Customer:
+    pass
 
-    def get_balance(self):
-        return self.__balance
-
-w = Wallet()
-print(w.deposit(100))
-print(w.withdraw(30))
-print(w.withdraw(80))
-print(w.get_balance())
-print(w.deposit(0))
-print(w.withdraw(-10))
-print(w.withdraw(70))
-print(w.get_balance())
+print(issubclass(BookProduct, Product))
+print(issubclass(Product, BookProduct))
+print(issubclass(Customer, Product))
+print(issubclass(Product, Product))
