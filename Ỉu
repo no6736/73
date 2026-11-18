@@ -1,6 +1,19 @@
-class Product:
+class NamedItem:
+    def get_name(self):
+        return self.name
+
+class PricedItem:
+    def get_price(self):
+        return self.price
+
+class CatalogItem(NamedItem, PricedItem):
     pass
 
-print(Product.__bases__)
-print(issubclass(Product, object))
-print(issubclass(object, Product))
+item = CatalogItem()
+item.name = "Bút"
+item.price = 5000
+
+print(item.get_name())
+print(item.get_price())
+print(issubclass(CatalogItem, NamedItem))
+print(issubclass(CatalogItem, PricedItem))
