@@ -1,19 +1,19 @@
-class NamedItem:
-    def get_name(self):
-        return self.name
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
 
-class PricedItem:
-    def get_price(self):
-        return self.price
+    def label(self):
+        return f"{self.name} - {self.price} đồng"
 
-class CatalogItem(NamedItem, PricedItem):
-    pass
+class BookProduct(Product):
+    def __init__(self, name, price, author):
+        super().__init__(name, price)
+        self.author = author
 
-item = CatalogItem()
-item.name = "Bút"
-item.price = 5000
+    def label(self):
+        return f"{super().label()} - {self.author}"
 
-print(item.get_name())
-print(item.get_price())
-print(issubclass(CatalogItem, NamedItem))
-print(issubclass(CatalogItem, PricedItem))
+book = BookProduct("Python cơ bản", 50000, "Lan")
+print(book.label())
+print(book.price)
