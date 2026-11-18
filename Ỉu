@@ -11,6 +11,13 @@ class StudentScore:
             return True
         return False
 
+s = StudentScore()
+print(s.set_score(-5))
+print(s.get_score())
+print(s.set_score(9))
+print(s.get_score())
+
+
 
 
 class StudentScore:
