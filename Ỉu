@@ -1,16 +1,8 @@
-class Student:
-    school = "Trường A"
+class Empty:
+    pass
 
-    def __init__(self, name):
-        self.name = name
+first = Empty()
+second = Empty()
 
-lan = Student("Lan")
-minh = Student("Minh")
-
-print(lan.name, lan.school)
-print(minh.name, minh.school)
-
-Student.school = "Trường B"
-
-print(lan.name, lan.school)
-print(minh.name, minh.school)
+print(type(first).__name__)
+print(first is second)
