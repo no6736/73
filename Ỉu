@@ -1,44 +1,28 @@
-class StudentScore:
+class Wallet:
     def __init__(self):
-        self.__score = 0
+        self.__balance = 0
 
-    def get_score(self):
-        return self.__score
-
-    def set_score(self, value):
-        if 0 <= value <= 10:
-            self.__score = value
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
             return True
         return False
 
-s = StudentScore()
-print(s.set_score(-5))
-print(s.get_score())
-print(s.set_score(9))
-print(s.get_score())
-
-
-
-
-class StudentScore:
-    def __init__(self):
-        self.__score = 0
-
-    def get_score(self):
-        return self.__score
-
-    def set_score(self, value):
-        if 0 <= value <= 10:
-            self.__score = value
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
             return True
         return False
 
-s = StudentScore()
-print(s.get_score())
-print(s.set_score(8))
-print(s.get_score())
-print(s.set_score(12))
-print(s.set_score(-1))
-print(s.get_score())
-print(s.set_score(10))
-print(s.get_score())
+    def get_balance(self):
+        return self.__balance
+
+w = Wallet()
+print(w.deposit(100))
+print(w.withdraw(30))
+print(w.withdraw(80))
+print(w.get_balance())
+print(w.deposit(0))
+print(w.withdraw(-10))
+print(w.withdraw(70))
+print(w.get_balance())
