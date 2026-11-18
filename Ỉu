@@ -1,14 +1,37 @@
-class Product:
-    pass
+class StudentScore:
+    def __init__(self):
+        self.__score = 0
 
-def show_info(product):
-    print(f"{product.name} - {product.price} đồng")
+    def get_score(self):
+        return self.__score
 
-product = Product()
-product.name = "Bút"
-product.price = 5000
+    def set_score(self, value):
+        if 0 <= value <= 10:
+            self.__score = value
+            return True
+        return False
 
-show_info(product)
 
-product.price = 6000
-show_info(product)
+
+class StudentScore:
+    def __init__(self):
+        self.__score = 0
+
+    def get_score(self):
+        return self.__score
+
+    def set_score(self, value):
+        if 0 <= value <= 10:
+            self.__score = value
+            return True
+        return False
+
+s = StudentScore()
+print(s.get_score())
+print(s.set_score(8))
+print(s.get_score())
+print(s.set_score(12))
+print(s.set_score(-1))
+print(s.get_score())
+print(s.set_score(10))
+print(s.get_score())
